@@ -1,5 +1,6 @@
-// #define R_min 450
+#define R_min 450
 // l*w=285*160
+//单位均为mm
 struct Point{
 	float x;
 	float y;
@@ -15,6 +16,4 @@ struct Line {
 	float b;
 };
 
-Circle path_l(Line l_in);
-
-void print_test(Circle circle_out);
+float path_l(Line l_in); //取一较远点为参照

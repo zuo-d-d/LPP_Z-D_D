@@ -6,7 +6,7 @@ int main() {
 	Line l1;
 	l1.k=0.5;
 	l1.b=0;
-	print_test(path_l(l1));
+	path_l(l1);
 	system("pause");
 	return 0;
 }

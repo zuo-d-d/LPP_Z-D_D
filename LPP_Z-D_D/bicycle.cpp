@@ -2,22 +2,20 @@
 #include "bicycle.h"
 using namespace std;
 
-Circle path_l(Line l_in) {
-	Circle circle_out;
-	float    x_far = 300;
+float path_l(Line l_in) {
+	float    x_far = 300;                //取较远点为300
 	Point  p_m;
 	Line l_r;
 	p_m.x = x_far / 2.0;
 	p_m.y = (l_in.k * x_far + l_in.b) / 2.0;
 	l_r.k = -(p_m.x / p_m.y);
 	l_r.b = p_m.y - l_r.k * p_m.x;
-	cout<<p_m.x<<' '<<p_m.y<<endl<<l_r.k<<' '<<l_r.b;
-	circle_out.center.y = circle_out.r = l_r.b;
-	circle_out.center.x = 0;
-	return circle_out;
+	if (fabs(l_r.b)>5000)				l_r.b=20000;	//车向稳定时设定阈值，不需调整
+	else if (fabs(l_r.b)<R_min)	l_r.b=R_min;		//超过极限半径时避免机械故障
+	return  l_r.b;
 }
 
-void print_test(Circle circle_out){
-	printf("\n圆心:(%f,%f)\t半径:%f\n", circle_out.center.x, circle_out.center.y, circle_out.r);
+float path_c(Circle c_in){
+	float r_now ;
 	return;
 }
