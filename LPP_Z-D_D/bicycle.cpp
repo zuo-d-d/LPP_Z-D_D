@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <math.h>
+#include <iostream>
 #include "bicycle.h"
+using namespace std;
 
-void path(circle cir) {
-  
+void path(Circle cir) {
+
 }
