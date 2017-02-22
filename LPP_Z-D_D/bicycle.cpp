@@ -17,5 +17,17 @@ float path_l(Line l_in) {
 
 float path_c(Circle c_in){
 	float r_now ;
-	return;
+	const float offset = 10;
+	if (fabs(c_in.o.x)<offset) {								//车身位置良好
+		r_now = c_in.o.y;
+		if (r_now>c_in.r-100 && r_now<c_in.r)	//100为车宽加上赛道余量
+			return r_now;
+		else if (r_now<c_in.r+100)						//0.9为修正系数
+			return r_now*0.9;
+		else
+			return R_min;
+	}
+	else {															//车身位置不好
+
+	}
 }

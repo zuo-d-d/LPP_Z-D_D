@@ -7,7 +7,7 @@ struct Point{
 };
 
 struct Circle{
-	Point center;
+	Point o;
 	float r;
 };
 
@@ -16,4 +16,4 @@ struct Line {
 	float b;
 };
 
-float path_l(Line l_in); //取一较远点为参照
+float path_l(Line l_in); //取一较远点为参照，目前以车身动态坐标系为准，可能要改为赛道坐标系
