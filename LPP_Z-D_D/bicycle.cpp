@@ -86,8 +86,37 @@ float path_l (Line l_in) {
 	}
 }
 
-float path_c (Circle c_in){
-	float r_out;
+float path_c (Circle c_in) {
+	float k0,y0_1,y0_2,y0;
+	y0_1 = c_in.o.y+pow((c_in.r*c_in.r-c_in.o.x*c_in.o.x),0.5);
+	y0_2 = c_in.o.y+pow((c_in.r*c_in.r-c_in.o.x*c_in.o.x),0.5);
+	if (fabs(y0_1) < fabs(y0_2))	//该条件待商讨
+		y0=y0_1;
+	else y0=y0_2;
+	k0 = c_in.o.x/(y0-c_in.o.y);
+	if (y0 <=0) {
+		if (k0 < K_c2) {
+			//k过大时要考虑反打方向
+
+		}
+		else if (k0 < K_c3) {
+
+		}
+		else {
+
+		}
+	}
+	else	{
+		if (k0 < K_c1) {
+
+		}
+		else if (k0 < K_c2) {
+
+		}
+		else {
+		
+		}
+	}
 	return 0;
 }
 
