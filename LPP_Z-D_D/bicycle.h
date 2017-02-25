@@ -15,6 +15,7 @@
 
 #define Track_w  220			//赛道半宽
 #define X_far		600			//所取的较远点x坐标
+#define Car_w		80			//车半宽
 
 //车				l*w=285*160
 //视场距离	300~600
@@ -25,7 +26,7 @@ struct Point{
 };
 
 struct Circle{
-	Point o; 
+	Point o;
 	float r;
 };
 
@@ -34,7 +35,7 @@ struct Line {
 	float b;
 };
 
-float path_l(Line l_in); //取一较远点为参照，目前以车身动态坐标系为准，可能要改为赛道坐标系。输入仅为直线	
+float path_l(Line l_in); // 取一较远点为参照，目前以车身动态坐标系为准，可能要改为赛道坐标系。输入仅为直线
 
 float path_c (Circle c_in);
 
@@ -44,4 +45,6 @@ int p_z_n(float in);							//输入一个数，判断正负
 
 float pp_d (Point p1, Point p2);		//求两点间距离
 
-int out_the_track(Line l_in,/* Circle c_in, */float r);	//检测当前轨迹是否会偏出赛道
+int out_the_track_l(Line l_in, float r);	//检测当前轨迹是否会偏出赛道
+
+int out_the_track_c(Circle c_in, float r);
