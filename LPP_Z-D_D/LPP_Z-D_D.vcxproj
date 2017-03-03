@@ -76,8 +76,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bicycle.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="bicycle.c" />
+    <ClCompile Include="test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bicycle.h" />

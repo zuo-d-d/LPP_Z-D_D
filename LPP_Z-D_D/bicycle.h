@@ -1,50 +1,50 @@
-//单位均为mm
+//锟斤拷位锟斤拷为mm
 
-#define R_min		300 			//最小转弯半径
-#define L				50000		//舵机零角阈值，是否有必要？
-#define Offset_m	30			//允许的中心线偏移量
+#define R_min		300 			//锟斤拷小转锟斤拷锟诫径
+#define L				50000		//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值锟斤拷锟角凤拷锟叫憋拷要锟斤拷
+#define Offset_m	30			//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷偏锟斤拷锟斤拷
 
-#define K_c1		0				//<0，曲线外道内切；
-#define K_c2		0.176		//<0.176，内道内切；0~0.176，外道中线；>0.176，外道外线
-#define K_c3		0.364		//0.176~0.364，内道中线；>0.364，内道外切
+#define K_c1		0				//<0锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟叫ｏ拷
+#define K_c2		0.176		//<0.176锟斤拷锟节碉拷锟斤拷锟叫ｏ拷0~0.176锟斤拷锟斤拷锟斤拷锟斤拷锟竭ｏ拷>0.176锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+#define K_c3		0.364		//0.176~0.364锟斤拷锟节碉拷锟斤拷锟竭ｏ拷>0.364锟斤拷锟节碉拷锟斤拷锟斤拷
 
-#define K_l1			0				//<0，直线内侧内切
-#define K_l2			0.176		//<0.176，外侧内切
-#define K_l3			0.577		//0.176~0.577，外侧中线；>0.577，外侧外切
-#define K_l4			0.466		//0~0.466，内测准直；>0.466，内测外切
+#define K_l1			0				//<0锟斤拷直锟斤拷锟节诧拷锟斤拷锟斤拷
+#define K_l2			0.176		//<0.176锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+#define K_l3			0.577		//0.176~0.577锟斤拷锟斤拷锟斤拷锟斤拷锟竭ｏ拷>0.577锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+#define K_l4			0.466		//0~0.466锟斤拷锟节诧拷准直锟斤拷>0.466锟斤拷锟节诧拷锟斤拷锟斤拷
 
-#define Track_w  220			//赛道半宽
-#define X_far		600			//所取的较远点x坐标
-#define Car_w		80			//车半宽
+#define Track_w  220			//锟斤拷锟斤拷锟斤拷锟斤拷
+#define X_far		600			//锟斤拷取锟侥斤拷远锟斤拷x锟斤拷锟斤拷
+#define Car_w		80			//锟斤拷锟斤拷锟斤拷
 
-//车				l*w=285*160
-//视场距离	300~600
+//锟斤拷				l*w=285*160
+//锟接筹拷锟斤拷锟斤拷	300~600
 
-struct Point{
+typedef struct {
 	float x;
 	float y;
-};
+}Point;
 
-struct Circle{
+typedef struct {
 	Point o;
 	float r;
-};
+}Circle;
 
-struct Line {
+typedef struct {
 	float k;
 	float b;
-};
+}Line ;
 
-float path_l(Line l_in); // 取一较远点为参照，目前以车身动态坐标系为准，可能要改为赛道坐标系。输入仅为直线
+float path_l(Line l_in); // 取一锟斤拷远锟斤拷为锟斤拷锟秸ｏ拷目前锟皆筹拷锟斤拷锟斤拷态锟斤拷锟斤拷系为准锟斤拷锟斤拷锟斤拷要锟斤拷为锟斤拷锟斤拷锟斤拷锟斤拷系锟斤拷锟斤拷锟斤拷锟斤拷为直锟斤拷
 
 float path_c (Circle c_in);
 
-float pp_to_r (Point p_to);				//出入两个点，求转弯半径
+float pp_to_r (Point p_to);				//锟斤拷锟斤拷锟斤拷锟斤拷锟姐，锟斤拷转锟斤拷锟诫径
 
-int p_z_n(float in);							//输入一个数，判断正负
+int p_z_n(float in);							//锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟叫讹拷锟斤拷锟斤拷
 
-float pp_d (Point p1, Point p2);		//求两点间距离
+float pp_d (Point p1, Point p2);		//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 
-int out_the_track_l(Line l_in, float r);	//检测当前轨迹是否会偏出赛道
+int out_the_track_l(Line l_in, float r);	//锟斤拷锟解当前锟届迹锟角凤拷锟斤拷偏锟斤拷锟斤拷锟斤拷
 
 int out_the_track_c(Circle c_in, float r);
