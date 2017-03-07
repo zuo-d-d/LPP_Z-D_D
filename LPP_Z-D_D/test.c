@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "bicycle.h"
 
 int main() {
@@ -10,6 +11,6 @@ int main() {
 	c1.o.y=1990;
 	c1.r=2000;
 	printf("%f\n",path_c(c1));
-	getchar();
+	system("pause");
 	return 0;
 }

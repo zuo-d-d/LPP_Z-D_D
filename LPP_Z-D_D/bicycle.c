@@ -90,10 +90,10 @@ float path_c (Circle c_in) {
 	float k0,y0;
 	Point p_to;
 	float r_out;
-	int r_l= c_in.o.y > 0 ? 1 : -1;
+	int r_l= p_z_n(c_in.o.y);
 	y0 = c_in.o.y-r_l*pow((c_in.r*c_in.r-c_in.o.x*c_in.o.x),0.5f);
 	k0 = c_in.o.x/(y0-c_in.o.y);
-	if (y0 <=0) {
+	if (r_l*y0 <=0) {
 		if (r_l*k0 < K_c2) {
 			p_to.x = X_far;
 			if (p_to.x > c_in.r - c_in.o.x) p_to.x =  c_in.r - c_in.o.x;
@@ -197,6 +197,42 @@ float path_c (Circle c_in) {
 			return r_out;
 		}
 	}
+}
+
+float path_s (Circle c1, Circle c2){
+	Point p_to;
+	float r_out;
+	if (c1.r==c2.r) {
+		p_to.x=(c1.o.x+c2.o.x)/2;
+		p_to.y=(c1.o.y+c2.o.y)/2;
+	}
+	else {
+		p_to.x=c1.o.x+(c2.o.x-c1.o.x)*c1.r/(c1.r+c2.r);
+		p_to.y=c1.o.y+(c2.o.y-c1.o.y)*c1.r/(c1.r+c2.r);
+	}
+	r_out=pp_to_r(p_to);
+	printf("S %f\n",r_out);
+	while (out_the_track_c(c1, r_out)) {
+		if (c1.o.y*r_out < 0)
+			r_out*=0.9;  //-10或*0.9待商讨
+		else {
+			if (fabs(r_out) < L) r_out*=1.1;
+			else r_out*=-1;					//r过大时要考虑反打方向
+		}
+		if(fabs(r_out)<=R_min) {
+			r_out=p_z_n(r_out) * R_min;
+			break;
+		}
+	}
+	return r_out;
+}
+
+float path_lc (Line l_in, Circle c_in){
+
+}
+
+float path_o (Point p_in,Line l_in){
+
 }
 
 float pp_to_r (Point p_to) {
