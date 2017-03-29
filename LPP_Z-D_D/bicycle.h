@@ -33,7 +33,7 @@ typedef struct {
 typedef struct {
 	float k;
 	float b;
-}Line ;
+}Line;
 
 float path_l(Line l_in);					//纯直线
 
@@ -41,7 +41,7 @@ float path_c (Circle c_in);				//纯弯道
 
 float path_s (Circle c1, Circle c2);		//s弯，包括所有双圆输入
 
-float pp_to_r (Point p_to);				
+float pp_to_r (Point p_to);
 
 int p_z_n(float in);							//求数为正或负
 
