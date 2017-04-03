@@ -39,14 +39,12 @@ float path_l(Line l_in);					//纯直线
 
 float path_c (Circle c_in);				//纯弯道
 
-float path_s (Circle c1, Circle c2);		//s弯，包括所有双圆输入
+float path_s (Circle c1, Circle c2);		//S弯，包括所有双圆输入
 
-float pp_to_r (Point p_to);
+float path_ls (Line l_in, Point p0 );	//入S弯
 
-int p_z_n(float in);							//求数为正或负
+float path_lc (Line l_in, Circle c_in, Point p0 );	//入弯
 
-float pp_d (Point p1, Point p2);		//求两点间距离
+float path_cl (Line l_in, Circle c_in, Point p0 );	//出弯
 
-int out_the_track_l(Line l_in, float r);
-
-int out_the_track_c(Circle c_in, float r);
+float path_o (Point p1,Point p2, Line l_in);
