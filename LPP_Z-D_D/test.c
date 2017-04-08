@@ -5,6 +5,7 @@
 
 int main() {
 	printf("%f\n",atan(1.0));
+	printf("%f\n",atan(1.0));
 	system("pause");
 	return 0;
 }
