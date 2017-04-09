@@ -2,6 +2,13 @@
 #include <math.h>
 #include "bicycle.h"
 
+//
+float choose() {
+
+}
+
+
+
 // path_?为路径函数
 float path_l (Line l_in) {
 	Point p_to;
@@ -387,7 +394,7 @@ float pp_to_r (Point p_to) {
 	l_r.k = -(p_m.x / p_m.y);
 	l_r.b = p_m.y - l_r.k * p_m.x;
 	printf("%f\n",l_r.b);
-	if (fabs(l_r.b)<R_min)	return R_min;		//超过极限半径时避免机械故障
+	if (fabs(l_r.b)<R_min)	return p_z_n(l_r.b)*R_min;		//超过极限半径时避免机械故障
 	else								return  l_r.b;
 }
 
@@ -485,4 +492,12 @@ int p_z_n(float in){
 //求两点间距离
 float pp_d (Point p1, Point p2){
 	return pow(pow((p1.x-p2.x),2)+pow((p1.y-p2.y),2),0.5f);
+}
+
+//直线转化（极坐标→直角坐标）
+Line3 l_to_l2 (Line2 l0) {
+	Line3 l;
+	l.k=tan(l0.thet0);
+	l.x0=l0.rho0/sin(l0.thet0);
+	return l;
 }

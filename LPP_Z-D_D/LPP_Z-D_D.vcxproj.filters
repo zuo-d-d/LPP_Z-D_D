@@ -21,9 +21,15 @@
     <ClCompile Include="test.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="local_route_plan.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bicycle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="local_route_plan.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

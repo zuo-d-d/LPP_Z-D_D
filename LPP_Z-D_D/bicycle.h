@@ -35,6 +35,16 @@ typedef struct {
 	float b;
 }Line;
 
+typedef struct {
+	float rho0;
+	float thet0;
+}Line2;
+
+typedef struct {
+	float k;
+	float x0;
+}Line3;
+
 float path_l(Line l_in);					//纯直线
 
 float path_c (Circle c_in);				//纯弯道
