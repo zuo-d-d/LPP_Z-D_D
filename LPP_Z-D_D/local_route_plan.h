@@ -1,5 +1,5 @@
 #define R_min		300 			//最小转弯半径
-#define L				50000			//直线阈值
+#define L				2000			//直线阈值
 #define Offset_m	30			//允许的中线偏移量
 
 #define K_c1		0				//<0外道内切
@@ -17,7 +17,7 @@
 
 #define Pi            3.14159
 
-enum rtype {rstraight, rcircle};
+typedef enum {rstraight, rcircle}rtype  ;
 
 typedef struct {
 	float x;
@@ -55,5 +55,17 @@ typedef struct {
 	float turn_radius;
 	bool direction;
 }turn_t;
+
+float path_l (Line2 l);
+
+float path_c (Circle c_in);
+
+float pp_to_r (Point p_to);
+
+int p_z_n(float in);
+
+float pp_d (Point p1, Point p2);
+
+Line two_p_to_kb(Line2 l0);
 
 turn_t local_route_plan(route routine);

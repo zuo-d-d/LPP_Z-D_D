@@ -22,7 +22,7 @@ turn_t local_route_plan(route routine){
 	}
 	return lrp_out;
 
-	/*
+	/* 
 	if (routine.length==1){
 	if(routine.element[0].type) return path_c(routine.element[0].c);
 	else return path_l(routine.element[0].l);
