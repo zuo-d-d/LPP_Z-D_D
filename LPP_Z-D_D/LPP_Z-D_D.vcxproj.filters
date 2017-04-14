@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bicycle.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="test.c">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -26,9 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bicycle.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="local_route_plan.h">
       <Filter>头文件</Filter>
     </ClInclude>

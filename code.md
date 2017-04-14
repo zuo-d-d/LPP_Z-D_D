@@ -1,83 +1,105 @@
 ### 伪代码
 
 #### 选择
-    if (线段两点距离>l1) path_l;
-    else if (线段两点距离>l2) path_lc;
-    
+    if(单元素) {
+      if (straight) path_l;
+      else path_c;
+    }
+    i=0;
+
+    // 先计数统计直线或曲线的i区间再进行下一步判断
+    // 记录交界点位置
+
+
+    // 长直线起始
+    while(element[i] == straight && i<length){
+      if (element[i].l.far_point.y < X_far) i++;
+      else break;
+    }
+    // i==length-1 ?
+    if (element[i] == scircle) {
+      if (element[i+1] = scircle) path_ls;
+      else path_lc;                            //是否会溢出？
+    }
+    else path_l;
+
+    // 弯道起始
+
+
 
 #### √ 直线( y = kx + b )
-    b > or < 0(左/右);  \\以下默认为右
-    if (b>off) {       \\位置靠外
-      if (k<10°) {       \\方向偏右
+    b > or < 0(左/右);  //以下默认为右
+    if (b>off) {       //位置靠外
+      if (k<10°) {       //方向偏右
         同侧逼近;
-        while (出界)          \\k<0时有几率
+        while (出界)          //k<0时有几率
           r*=0.9;
       }
-      else if (k<30°){   \\方向中等
+      else if (k<30°){   //方向中等
         中线逼近;
-        while (出界)          \\几率不大
+        while (出界)          //几率不大
           r*=0.9;
       }
-      else{              \\方向偏左
+      else{              //方向偏左
         对侧逼近;
-        while (出界)          \\几率不大？
+        while (出界)          //几率不大？
           r*=0.9;
       }
     }
-    else {             \\位置靠内
-      if (k<0°) {        \\方向偏右
+    else {             //位置靠内
+      if (k<0°) {        //方向偏右
         同侧逼近;
-        while (出界)           \\几率极小
+        while (出界)           //几率极小
           r*=0.9;
       }
-      else if (k<25°) {  \\方向中等
+      else if (k<25°) {  //方向中等
         直行;
       }
-      else {             \\方向偏左
+      else {             //方向偏左
         对侧逼近;
-        while (出界)           \\几率不大
+        while (出界)           //几率不大
           r*=0.9;
       }
     }
 
 #### √ 曲线( x, y, r)
-    y > 0 or < 0(左/右转); \\以下默认右转
+    y > 0 or < 0(左/右转); //以下默认右转
     赛道 (内 or 外) 侧;
     if (内道及中线){
-      if (k<10°){           \\方向偏右
+      if (k<10°){           //方向偏右
         内切;
-        while (出界){           \\几率大
+        while (出界){           //几率大
           if (反转向) r*=0.9;
           else{
             if (r<L) r*=1.1;
-            else r*=-1;         \\反打方向
+            else r*=-1;         //反打方向
           }
         }
       }
-      else if (k<20°){      \\方向中等
+      else if (k<20°){      //方向中等
         切中线;
-        while (出界){            \\几率小
+        while (出界){            //几率小
           if (r>L) r=L;
           else r*=1.1；
         }
       }
-      else{                 \\方向偏左
+      else{                 //方向偏左
         外切;
-        while (出界)            \\几率小
+        while (出界)            //几率小
           r*=0.9；
       }                  
     }
     else {
-      if (k<0)              \\方向偏右
+      if (k<0)              //方向偏右
         内切；
-      else if (k<10°){      \\方向中等
+      else if (k<10°){      //方向中等
         切中线;
-        while (出界)           \\几率不大
+        while (出界)           //几率不大
           r*=0.9;
       }
-      else {                \\方向偏左
+      else {                //方向偏左
         外切;
-        while (出界)           \\有几率
+        while (出界)           //有几率
           r*=0.9;
       }
     }
@@ -109,7 +131,7 @@
       if (反转向) r*=0.9;
       else{
         if (r<L) r*=1.1;
-        else r*=-1;         \\反打方向
+        else r*=-1;         //反打方向
       }
     }
 

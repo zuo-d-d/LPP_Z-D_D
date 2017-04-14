@@ -232,4 +232,5 @@ $RECYCLE.BIN/
 
 *.exe
 
-compiling_error.txt
+bicycle.h
+bicycle.c

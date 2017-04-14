@@ -50,15 +50,10 @@ typedef struct {
 	elements *element;
 }route;
 
-
 typedef struct {
 	float turn_radius;
 	bool direction;
 }turn_t;
-
-float path_l (Line2 l);
-
-float path_c (Circle c_in);
 
 float pp_to_r (Point p_to);
 
@@ -67,5 +62,27 @@ int p_z_n(float in);
 float pp_d (Point p1, Point p2);
 
 Line two_p_to_kb(Line2 l0);
+
+int out_the_track_l(Line l_in, float r);
+
+int out_the_track_c(Circle c_in, float r);
+
+int out_the_track_p(Point p,float x, float r);
+
+int out_the_track_l2(Line l_in, float r);
+
+float path_l (Line2 l);
+
+float path_c (Circle c_in);
+
+float path_s (Circle c1, Circle c2);		//S弯，包括所有双圆输入
+
+float path_ls (Line l_in, Point p0 );	//入S弯
+
+float path_lc (Line l_in, Circle c_in, Point p0 );	//入弯
+
+float path_cl (Line l_in, Circle c_in, Point p0 );	//出弯
+
+float path_o (Point p1,Point p2, Line l_in);
 
 turn_t local_route_plan(route routine);
