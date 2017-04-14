@@ -1,7 +1,7 @@
 //单位均为mm
 
 #define R_min		300 			//最小转弯半径
-#define L				50000			//直线阈值
+#define L				2000			//直线阈值
 #define Offset_m	30			//允许的中线偏移量
 
 #define K_c1		0				//<0外道内切
