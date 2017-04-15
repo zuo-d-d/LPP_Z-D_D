@@ -12,12 +12,21 @@
 #define K_l4			0.466		//0~0.466内道保直>0.466内道异侧
 
 #define Track_w  220		//赛道半宽
-#define X_far		600			//所取的较远点坐标
 #define Car_w		80			//车模半宽
+
+#define X_l_far			600		//直线较远点坐标
+#define X_c_far		500		//弯道较远点坐标
+#define X_ls				200		//入S弯准直控制距离
+#define X_lc_in			500		//入弯内道目标点控制距离
+#define X_lc_out		200		//入弯外道准直控制距离
+#define X_cl				200		//出弯准直控制距离
+#define X_block_p1	200		//障碍前点避障控制距离
+#define X_block_p2	100		//障碍后点回中控制距离
+#define X_ignore		50		//最近元素忽略距离
 
 #define Pi            3.14159
 
-typedef enum {rstraight, rcircle}rtype  ;
+typedef enum {rstraight, rcircle}rtype;
 
 typedef struct {
 	float x;
@@ -55,6 +64,11 @@ typedef struct {
 	bool direction;
 }turn_t;
 
+typedef struct {
+	bool exist;
+	Point near_point, far_point;
+}Block;
+
 float pp_to_r (Point p_to);
 
 int p_z_n(float in);
@@ -71,7 +85,7 @@ int out_the_track_p(Point p,float x, float r);
 
 int out_the_track_l2(Line l_in, float r);
 
-float path_l (Line2 l);
+float path_l (Line l);
 
 float path_c (Circle c_in);
 
@@ -83,6 +97,6 @@ float path_lc (Line l_in, Circle c_in, Point p0 );	//入弯
 
 float path_cl (Line l_in, Circle c_in, Point p0 );	//出弯
 
-float path_o (Point p1,Point p2, Line l_in);
+float path_block (Point p1,Point p2, Line l_in);
 
 turn_t local_route_plan(route routine);
