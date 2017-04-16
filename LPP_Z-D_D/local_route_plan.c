@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <math.h>
 #include "local_route_plan.h"
 
@@ -6,7 +6,7 @@ turn_t local_route_plan(route routine, Block block_in){
 	turn_t lrp_out;
 	Point p_cc;
 	int i;
-	if (routine.length==1)		//µ¥ÔªËØ
+	if (routine.length==1)		//å•å…ƒç´ 
 	{
 		if(routine.element[0].type) {
 			lrp_out.turn_radius=path_c(routine.element[0].c);
@@ -48,7 +48,7 @@ turn_t local_route_plan(route routine, Block block_in){
 			}
 		}
 		else if (routine.element[i-1].l.far_point.y<X_ignore)	{
-			if (routine.element[i+1].type == rcircle){                                                             //ÊÇ·ñÒç³ö£¿
+			if (routine.element[i+1].type == rcircle){                                                             //æ˜¯å¦æº¢å‡ºï¼Ÿ
 				lrp_out.turn_radius=path_s(routine.element[i].c, routine.element[i+1].c);
 				if (lrp_out.turn_radius>0) lrp_out.direction=1;
 				else {
@@ -91,7 +91,7 @@ turn_t local_route_plan(route routine, Block block_in){
 					lrp_out.direction=0;
 					lrp_out.turn_radius*=-1;
 				}
-			}      //¼Ù¶¨Í¬ÏòÔ²ÎŞ¶ş´ÎÊä³ö
+			}      //å‡å®šåŒå‘åœ†æ— äºŒæ¬¡è¾“å‡º
 			else{
 				lrp_out.turn_radius=path_lc(two_p_to_kb(routine.element[i-1].l),routine.element[i].c, routine.element[i-1].l.far_point);
 				if (lrp_out.turn_radius>0) lrp_out.direction=1;
@@ -103,7 +103,7 @@ turn_t local_route_plan(route routine, Block block_in){
 		}
 	} 
 	else {
-		if (routine.element[1].type == rstraight) {						//³öÍä
+		if (routine.element[1].type == rstraight) {						//å‡ºå¼¯
 			if (routine.element[1].l.near_point.y > X_c_far){
 				lrp_out.turn_radius=path_c(routine.element[0].c);
 				if (lrp_out.turn_radius>0) lrp_out.direction=1;
@@ -148,7 +148,7 @@ turn_t local_route_plan(route routine, Block block_in){
 					lrp_out.turn_radius*=-1;
 				}
 			}
-			else if (routine.element[2].type==rcircle) {			//ÈıÁ¬Íä£¨Í¬/ÒìÏò£©£¬¾ù°´SÍä×ß
+			else if (routine.element[2].type==rcircle) {			//ä¸‰è¿å¼¯ï¼ˆåŒ/å¼‚å‘ï¼‰ï¼Œå‡æŒ‰Så¼¯èµ°
 				lrp_out.turn_radius=path_s(routine.element[1].c, routine.element[2].c);
 				if (lrp_out.turn_radius>0) lrp_out.direction=1;
 				else {
@@ -169,7 +169,7 @@ turn_t local_route_plan(route routine, Block block_in){
 	return lrp_out;
 }
 
-// path_?ÎªÂ·¾¶º¯Êı
+// path_?ä¸ºè·¯å¾„å‡½æ•°
 float path_l (Line l_in) {
 	Point p_to;
 	float r_out;
@@ -180,7 +180,7 @@ float path_l (Line l_in) {
 			p_to.y = (l_in.k*X_l_far+l_in.b)+b_pn*Offset_m;
 			r_out = pp_to_r(p_to);
 			while (out_the_track_l(l_in,r_out)) {
-				r_out*=0.9;  //-10»ò*0.9´ıÉÌÌÖ
+				r_out*=0.9;  //-10æˆ–*0.9å¾…å•†è®¨
 				if(fabs(r_out)<=R_min) {
 					r_out=p_z_n(r_out) * R_min;
 					break;
@@ -193,7 +193,7 @@ float path_l (Line l_in) {
 			p_to.y = l_in.k*X_l_far+l_in.b;
 			r_out = pp_to_r(p_to);
 			while (out_the_track_l(l_in,r_out)) {
-				r_out*=0.9;  //-10»ò*0.9´ıÉÌÌÖ
+				r_out*=0.9;  //-10æˆ–*0.9å¾…å•†è®¨
 				if(fabs(r_out)<=R_min) {
 					r_out=p_z_n(r_out) * R_min;
 					break;
@@ -206,7 +206,7 @@ float path_l (Line l_in) {
 			p_to.y = (l_in.k*X_l_far+l_in.b)-b_pn*Offset_m;
 			r_out = pp_to_r(p_to);
 			while (out_the_track_l(l_in,r_out)) {
-				r_out*=0.9;  //-10»ò*0.9´ıÉÌÌÖ
+				r_out*=0.9;  //-10æˆ–*0.9å¾…å•†è®¨
 				if(fabs(r_out)<=R_min) {
 					r_out=p_z_n(r_out) * R_min;
 					break;
@@ -221,7 +221,7 @@ float path_l (Line l_in) {
 			p_to.y = (l_in.k*X_l_far+l_in.b)+b_pn*Offset_m;
 			r_out = pp_to_r(p_to);
 			while (out_the_track_l(l_in,r_out)) {
-				r_out*=0.9;  //-10»ò*0.9´ıÉÌÌÖ
+				r_out*=0.9;  //-10æˆ–*0.9å¾…å•†è®¨
 				if(fabs(r_out)<=R_min) {
 					r_out=p_z_n(r_out) * R_min;
 					break;
@@ -236,7 +236,6 @@ float path_l (Line l_in) {
 			p_to.x = X_l_far;
 			p_to.y = (l_in.k*X_l_far+l_in.b)-b_pn*Offset_m;
 			r_out = pp_to_r(p_to);
-			printf("6 %f\n",r_out);
 			while (out_the_track_l(l_in,r_out)) {
 				if(fabs(r_out)<=R_min) {
 					r_out=p_z_n(r_out) * R_min;
@@ -263,10 +262,10 @@ float path_c (Circle c_in) {
 			r_out = pp_to_r(p_to);
 			while (out_the_track_c(c_in, r_out)) {
 				if (r_l*r_out < 0)
-					r_out*=0.9;  //-10»ò*0.9´ıÉÌÌÖ
+					r_out*=0.9;  //-10æˆ–*0.9å¾…å•†è®¨
 				else {
 					if (fabs(r_out) < L) r_out*=1.1;
-					else r_out*=-1;					//r¹ı´óÊ±Òª¿¼ÂÇ·´´ò·½Ïò
+					else r_out*=-1;					//rè¿‡å¤§æ—¶è¦è€ƒè™‘åæ‰“æ–¹å‘
 				}
 				if(fabs(r_out)<=R_min) {
 					r_out=p_z_n(r_out) * R_min;
@@ -280,7 +279,7 @@ float path_c (Circle c_in) {
 			if (p_to.x > c_in.r - c_in.o.x) p_to.x =  c_in.r - c_in.o.x;
 			p_to.y =  c_in.o.y-r_l*pow((c_in.r*c_in.r-pow(p_to.x-c_in.o.x,2)),0.5f);
 			r_out = pp_to_r(p_to);
-			//ÊÇ·ñĞèÒª£¿
+			//æ˜¯å¦éœ€è¦ï¼Ÿ
 			while (out_the_track_c(c_in, r_out)) {
 				if (r_out >= L) {
 					r_out=L;
@@ -302,7 +301,7 @@ float path_c (Circle c_in) {
 			if (p_to.x > c_in.r - c_in.o.x) p_to.x =  c_in.r - c_in.o.x;
 			p_to.y =  c_in.o.y-r_l*pow((c_in.r*c_in.r-pow(p_to.x-c_in.o.x,2)),0.5f)-r_l*Offset_m;
 			r_out = pp_to_r(p_to);
-			//ÊÇ·ñĞèÒª£¿
+			//æ˜¯å¦éœ€è¦ï¼Ÿ
 			while (out_the_track_c(c_in, r_out)) {
 				r_out*=0.9;
 				if(fabs(r_out)<=R_min) {
@@ -319,7 +318,7 @@ float path_c (Circle c_in) {
 			if (p_to.x > c_in.r - c_in.o.x) p_to.x =  c_in.r - c_in.o.x;
 			p_to.y =  c_in.o.y-r_l*pow((c_in.r*c_in.r-pow(p_to.x-c_in.o.x,2)),0.5f)+r_l*Offset_m;
 			r_out = pp_to_r(p_to);
-			//ÊÇ·ñĞèÒª£¿
+			//æ˜¯å¦éœ€è¦ï¼Ÿ
 			if(fabs(r_out)<=R_min)
 				r_out=p_z_n(r_out) * R_min;
 			return r_out;
@@ -369,10 +368,10 @@ float path_s (Circle c1, Circle c2){
 	r_out=pp_to_r(p_to);
 	while (out_the_track_c(c1, r_out)) {
 		if (c1.o.y*r_out < 0)
-			r_out*=0.9;  //-10»ò*0.9´ıÉÌÌÖ
+			r_out*=0.9;  //-10æˆ–*0.9å¾…å•†è®¨
 		else {
 			if (fabs(r_out) < L) r_out*=1.1;
-			else r_out*=-1;					//r¹ı´óÊ±Òª¿¼ÂÇ·´´ò·½Ïò
+			else r_out*=-1;					//rè¿‡å¤§æ—¶è¦è€ƒè™‘åæ‰“æ–¹å‘
 		}
 		if(fabs(r_out)<=R_min) {
 			r_out=p_z_n(r_out) * R_min;
@@ -529,7 +528,7 @@ float path_block (Point p1, Point p2, Line l_in){
 	}
 }
 
-//ÒÔÏÂÎª¹¤¾ßÀàº¯Êı
+//ä»¥ä¸‹ä¸ºå·¥å…·ç±»å‡½æ•°
 int out_the_track_l(Line l_in, float r) {
 	Point p_t, p_l;
 	float k1=l_in.k;
@@ -617,17 +616,17 @@ float pp_to_r (Point p_to) {
 	p_m.y = p_to.y / 2;
 	l_r.k = -(p_m.x / p_m.y);
 	l_r.b = p_m.y - l_r.k * p_m.x;
-	if (fabs(l_r.b)<R_min)	return p_z_n(l_r.b)*R_min;		//³¬¹ı¼«ÏŞ°ë¾¶Ê±±ÜÃâ»úĞµ¹ÊÕÏ
+	if (fabs(l_r.b)<R_min)	return p_z_n(l_r.b)*R_min;		//è¶…è¿‡æé™åŠå¾„æ—¶é¿å…æœºæ¢°æ•…éšœ
 	else								return  l_r.b;
 }
-//ÇóÊıÎªÕı»ò¸º
+//æ±‚æ•°ä¸ºæ­£æˆ–è´Ÿ
 int p_z_n(float in){
 	if (in>0)			return 1;
 	else if (in<0)		return -1;
 	else					return 0;
 }
 
-//ÇóÁ½µã¼ä¾àÀë
+//æ±‚ä¸¤ç‚¹é—´è·ç¦»
 float pp_d (Point p1, Point p2){
 	return pow(pow((p1.x-p2.x),2)+pow((p1.y-p2.y),2),0.5f);
 }

@@ -1,28 +1,28 @@
-#define R_min		300 			//×îĞ¡×ªÍä°ë¾¶
-#define L				2000			//Ö±ÏßãĞÖµ
-#define Offset_m	30			//ÔÊĞíµÄÖĞÏßÆ«ÒÆÁ¿
+ï»¿#define R_min		300 			//æœ€å°è½¬å¼¯åŠå¾„
+#define L				2000			//ç›´çº¿é˜ˆå€¼
+#define Offset_m	30			//å…è®¸çš„ä¸­çº¿åç§»é‡
 
-#define K_c1		0				//<0ÍâµÀÄÚÇĞ
-#define K_c2		0.176		//<0.176ÄÚµÀÄÚÇĞ0~0.176ÍâµÀÖĞÏß>0.176ÍâµÀÍâÇĞ
-#define K_c3		0.364		//0.176~0.364ÄÚµÀÖĞÏß>0.364ÄÚµÀÍâÇĞ
+#define K_c1		0				//<0å¤–é“å†…åˆ‡
+#define K_c2		0.176		//<0.176å†…é“å†…åˆ‡0~0.176å¤–é“ä¸­çº¿>0.176å¤–é“å¤–åˆ‡
+#define K_c3		0.364		//0.176~0.364å†…é“ä¸­çº¿>0.364å†…é“å¤–åˆ‡
 
-#define K_l1			0				//<0ÄÚµÀÍ¬²à
-#define K_l2			0.176		//<0.176ÍâµÀÍ¬²à
-#define K_l3			0.577		//0.176~0.577ÍâµÀÖĞÏß>0.577ÍâµÀÒì²à
-#define K_l4			0.466		//0~0.466ÄÚµÀ±£Ö±>0.466ÄÚµÀÒì²à
+#define K_l1			0				//<0å†…é“åŒä¾§
+#define K_l2			0.176		//<0.176å¤–é“åŒä¾§
+#define K_l3			0.577		//0.176~0.577å¤–é“ä¸­çº¿>0.577å¤–é“å¼‚ä¾§
+#define K_l4			0.466		//0~0.466å†…é“ä¿ç›´>0.466å†…é“å¼‚ä¾§
 
-#define Track_w  220		//ÈüµÀ°ë¿í
-#define Car_w		80			//³µÄ£°ë¿í
+#define Track_w  220		//èµ›é“åŠå®½
+#define Car_w		80			//è½¦æ¨¡åŠå®½
 
-#define X_l_far			600		//Ö±Ïß½ÏÔ¶µã×ø±ê
-#define X_c_far		500		//ÍäµÀ½ÏÔ¶µã×ø±ê
-#define X_ls				200		//ÈëSÍä×¼Ö±¿ØÖÆ¾àÀë
-#define X_lc_in			500		//ÈëÍäÄÚµÀÄ¿±êµã¿ØÖÆ¾àÀë
-#define X_lc_out		200		//ÈëÍäÍâµÀ×¼Ö±¿ØÖÆ¾àÀë
-#define X_cl				200		//³öÍä×¼Ö±¿ØÖÆ¾àÀë
-#define X_block_p1	200		//ÕÏ°­Ç°µã±ÜÕÏ¿ØÖÆ¾àÀë
-#define X_block_p2	100		//ÕÏ°­ºóµã»ØÖĞ¿ØÖÆ¾àÀë
-#define X_ignore		50		//×î½üÔªËØºöÂÔ¾àÀë
+#define X_l_far			600		//ç›´çº¿è¾ƒè¿œç‚¹åæ ‡
+#define X_c_far		500		//å¼¯é“è¾ƒè¿œç‚¹åæ ‡
+#define X_ls				200		//å…¥Så¼¯å‡†ç›´æ§åˆ¶è·ç¦»
+#define X_lc_in			500		//å…¥å¼¯å†…é“ç›®æ ‡ç‚¹æ§åˆ¶è·ç¦»
+#define X_lc_out		200		//å…¥å¼¯å¤–é“å‡†ç›´æ§åˆ¶è·ç¦»
+#define X_cl				200		//å‡ºå¼¯å‡†ç›´æ§åˆ¶è·ç¦»
+#define X_block_p1	200		//éšœç¢å‰ç‚¹é¿éšœæ§åˆ¶è·ç¦»
+#define X_block_p2	100		//éšœç¢åç‚¹å›ä¸­æ§åˆ¶è·ç¦»
+#define X_ignore		50		//æœ€è¿‘å…ƒç´ å¿½ç•¥è·ç¦»
 
 #define Pi            3.14159
 
@@ -89,13 +89,13 @@ float path_l (Line l);
 
 float path_c (Circle c_in);
 
-float path_s (Circle c1, Circle c2);		//SÍä£¬°üÀ¨ËùÓĞË«Ô²ÊäÈë
+float path_s (Circle c1, Circle c2);		//Så¼¯ï¼ŒåŒ…æ‹¬æ‰€æœ‰åŒåœ†è¾“å…¥
 
-float path_ls (Line l_in, Point p0 );	//ÈëSÍä
+float path_ls (Line l_in, Point p0 );	//å…¥Så¼¯
 
-float path_lc (Line l_in, Circle c_in, Point p0 );	//ÈëÍä
+float path_lc (Line l_in, Circle c_in, Point p0 );	//å…¥å¼¯
 
-float path_cl (Line l_in, Circle c_in, Point p0 );	//³öÍä
+float path_cl (Line l_in, Circle c_in, Point p0 );	//å‡ºå¼¯
 
 float path_block (Point p1,Point p2, Line l_in);
 
