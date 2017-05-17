@@ -1,3 +1,7 @@
+/*
+未特别注明，单位均为mm
+*/
+
 ﻿#define R_min		300 			//最小转弯半径
 #define L				2000			//直线阈值
 #define Offset_m	30			//允许的中线偏移量
@@ -15,7 +19,7 @@
 #define Car_w		80			//车模半宽
 
 #define X_l_far			600		//直线较远点坐标
-#define X_c_far		500		//弯道较远点坐标
+#define X_c_far			500		//弯道较远点坐标
 #define X_ls				200		//入S弯准直控制距离
 #define X_lc_in			500		//入弯内道目标点控制距离
 #define X_lc_out		200		//入弯外道准直控制距离
@@ -39,7 +43,7 @@ typedef struct {
 
 typedef struct {
 	float k;
-	float b; 
+	float b;
 }Line;
 
 typedef struct {

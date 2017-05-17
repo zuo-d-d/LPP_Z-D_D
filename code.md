@@ -1,33 +1,72 @@
 ### 伪代码
 
 #### 选择
-    if(单元素) {
-      if (straight) path_l;
-      else path_c;
+```c
+if(单元素) {
+  if (circle) path_c;
+  else path_l;
+}
+
+// 直线起始
+if (第一元素为直线) {
+  i=直线元素数;
+  if (i==length) {
+    path_l(最后一段直线);     /*warning!!*/   
+  }
+  else if (直线组终点过近) {
+    if (接两个圆) {
+      path_s();
     }
-    i=0;
-
-    // 先计数统计直线或曲线的i区间再进行下一步判断
-    // 记录交界点位置
-
-
-    // 长直线起始
-    while(element[i] == straight && i<length){
-      if (element[i].l.far_point.y < X_far) i++;
-      else break;
+    else{
+      path_c();
     }
-    // i==length-1 ?
-    if (element[i] == scircle) {
-      if (element[i+1] = scircle) path_ls;
-      else path_lc;                            //是否会溢出？
+  }
+  else if (直线组终点足够远) {
+    path_l()
+    path_block();
+  }
+  else {
+    if(接两圆){
+      path_ls();
     }
-    else path_l;
-
-    // 弯道起始
-
+    else{
+      path_lc();
+    }
+  }
+}
+// 弯道起始
+else{
+  if (下一元素为直线){
+    if (直线切点过远) {
+      path_c();
+    }
+    else if (直线切点一般) {
+      path_cl();
+    }
+    else {  /*直线切点过近*/
+      path_l();             /*是否应整理直线组?*/
+    }
+  }
+  else{   /*下一元素为圆*/
+    if (当前圆足够长) {
+      path_s();
+    }
+    else if (仅有两圆) {
+      path_c(第二个圆);
+    }
+    else if (第三元素为圆){
+      path_s();
+    }
+    else{
+      path_cl();
+    }
+  }
+}
+```
 
 
 #### √ 直线( y = kx + b )
+```c
     b > or < 0(左/右);  //以下默认为右
     if (b>off) {       //位置靠外
       if (k<10°) {       //方向偏右
@@ -61,6 +100,7 @@
           r*=0.9;
       }
     }
+```
 
 #### √ 曲线( x, y, r)
     y > 0 or < 0(左/右转); //以下默认右转
